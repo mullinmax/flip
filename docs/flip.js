@@ -9,17 +9,18 @@ for(var c = 0; c < size; c++){
         rules[c][r] = createRule(c, r, size);
     }
 }
-console.log(rules)
+
 // draw board
 cells = []
 for(var c = 0; c < size; c++){
     cells[c] = []
     for(var r = 0; r < size; r++){
         cells[c][r] = true;
-        cell = `<div id='r${r}c${c}' class='cell' onClick='applyRule(${r},${c})'></div>`
+        cell = `<div id='r${r}c${c}' class='cell' onClick='applyRule(${r},${c})' ontouchstart='applyRule(${r},${c})'></div>`
         document.getElementById('flip').innerHTML += cell;
     }
 }
+
 for(var i = 0; i < 3; i++){
     var row = Math.floor(Math.random()*size);
     var col = Math.floor(Math.random()*size);
@@ -29,19 +30,21 @@ for(var i = 0; i < 3; i++){
 
 // run game
 function applyRule(row, col){
-    console.log(`applying rule ${col}, ${row}`);
     for(var c = 0; c < size; c++){
         for(var r = 0; r < size; r++){
-            fun = rules[col][row][c][r]
-            if (fun == 'W'){
-                cells[c][r] = true;
-            } else if(fun == 'B'){
-                cells[c][r] = false;
-            } else if(fun == 'F'){
+            if (rules[col][row][c][r] == 'F'){
                 cells[c][r] = !cells[c][r];
-            } else if(fun == 'N'){
-                cells[c][r] = cells[c][r];
             }
+            // fun = rules[col][row][c][r]
+            // if (fun == 'W'){
+            //     cells[c][r] = true;
+            // } else if(fun == 'B'){
+            //     cells[c][r] = false;
+            // } else if(fun == 'F'){
+            //     cells[c][r] = !cells[c][r];
+            // } else if(fun == 'N'){
+            //     cells[c][r] = cells[c][r];
+            // }
         }
     }
     updateBoard()
@@ -68,11 +71,9 @@ function createRule(col, row, s){
         rule[c] = []
         for(var r = 0; r < s; r++){
             var index = Math.floor(Math.random()*funs.length);
-            // console.log(index, funs[index])
             rule[c][r] = funs[index];
         }
-
     }
-    rule[col][row] = funs[0]
+    rule[col][row] = 'F'
     return rule
 }
