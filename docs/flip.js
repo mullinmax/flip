@@ -94,8 +94,8 @@ function updateBoard(){
 function createRule(col, row, s){
     var rule = [];
     // funs = ['F', 'B', 'W', 'N'];
-    // funs = ['F', 'N', 'N', 'N'];
-    funs = ['N'];
+    funs = ['F', 'N', 'N'];
+    // funs = ['N'];
     for(var c = 0; c < s; c++){
         rule[c] = []
         for(var r = 0; r < s; r++){
