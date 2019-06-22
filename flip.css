@@ -1,0 +1,27 @@
+body{
+    background: rgb(60, 60, 60);
+    /* background: white; */
+}
+
+.board{
+    display: grid;
+    grid-gap: 1vw;
+    grid-template-columns: repeat(3, 15vw);
+}
+
+.cell{
+    width: 15vw;
+    height: 15vw;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background: rgb(231, 231, 231); 
+    transition: 0.6s;
+}
+
+.flip{
+    transform: rotateY(180deg);
+    background: rgb(20, 20, 20) !important; 
+    transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
