@@ -1,3 +1,21 @@
+.splash{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display:grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    background: rgb(60, 60, 60);
+    z-index: 10;
+    opacity: 1;
+    transition: 3s opacity;
+    transition-timing-function: ease-in;
+    pointer-events: none
+}
+
 body{
     background: rgb(60, 60, 60);
     overflow-y:hidden;
@@ -9,6 +27,14 @@ h1{
     font-size: 5vw;
     margin: 0px;
 }
+
+h2{
+    font-family: 'Biryani', sans-serif;
+    color: rgb(231, 231, 231); 
+    font-size: 3vw;
+    margin: 0px;
+}
+
 .layout{
     display: grid;
     height: 100vh;
@@ -37,6 +63,7 @@ h1{
 }
 
 @media (orientation: landscape){
+
     .cell{
         width: calc(94vh / 3);
         height: calc(94vh / 3);
