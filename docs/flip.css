@@ -1,23 +1,67 @@
 body{
     background: rgb(60, 60, 60);
-    /* background: white; */
+    overflow-y:hidden;
+}
+
+h1{
+    font-family: 'Biryani', sans-serif;
+    color: rgb(231, 231, 231); 
+    font-size: 5vw;
+    margin: 0px;
+}
+.layout{
+    display: grid;
+    height: 100vh;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 1fr 100vw 1fr;
 }
 
 .board{
+    grid-row: 2 / 3;
     display: grid;
     justify-items: center;
+    align-items: center;
     grid-gap: 1vw;
     grid-template-columns: repeat(3, 1fr);
+    width: 100%;
 }
 
 .cell{
-    width: 20vw;
-    height: 20vw;
+    width: calc(94vw / 3);
+    height: calc(94vw / 3);
     border-radius: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background: rgb(231, 231, 231); 
     transition: 0.6s;
 }
+
+@media (orientation: landscape){
+    .cell{
+        width: calc(94vh / 3);
+        height: calc(94vh / 3);
+    }
+
+    .board{
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-gap: 1vh;
+        grid-template-columns: repeat(3, 1fr);
+        width: 100%;
+    }
+
+    .layout{
+        display: grid;
+        height: 100vh;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    
+}
+
 
 .flip{
     transform: rotateY(180deg);
