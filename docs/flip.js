@@ -16,7 +16,7 @@ for(var c = 0; c < size; c++){
     cells[c] = []
     for(var r = 0; r < size; r++){
         cells[c][r] = true;
-        cell = `<div id='r${r}c${c}' class='cell' onClick='applyRule(${r},${c})' ontouchstart='applyRule(${r},${c})'></div>`
+        cell = `<div id='r${r}c${c}' class='cell' onClick='applyRule(${r},${c})'></div>`
         document.getElementById('flip').innerHTML += cell;
     }
 }
