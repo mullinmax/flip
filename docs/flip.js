@@ -1,35 +1,39 @@
-// set game size
-var size = 3
+// function setupGame(){
+    // set game size
+    var size = 3
 
-// create rules
-var rules = []
-for(var c = 0; c < size; c++){
-    rules[c] = []
-    for(var r = 0; r < size; r++){
-        rules[c][r] = createRule(c, r, size);
+    // create rules
+    var rules = []
+    for(var c = 0; c < size; c++){
+        rules[c] = []
+        for(var r = 0; r < size; r++){
+            rules[c][r] = createRule(c, r, size);
+        }
     }
-}
 
-// draw board
-cells = []
-for(var c = 0; c < size; c++){
-    cells[c] = []
-    for(var r = 0; r < size; r++){
-        cells[c][r] = true;
-        cell = `<div id='r${r}c${c}' class='cell' onClick='applyRule(${r},${c})'></div>`
-        document.getElementById('flip').innerHTML += cell;
+    // draw board
+    cells = []
+    for(var c = 0; c < size; c++){
+        cells[c] = []
+        for(var r = 0; r < size; r++){
+            cells[c][r] = true;
+            cell = `<div id='r${r}c${c}' class='cell' onClick='applyRule(${r},${c}, true)'></div>`
+            document.getElementById('flip').innerHTML += cell;
+        }
     }
-}
 
-for(var i = 0; i < 3; i++){
-    var row = Math.floor(Math.random()*size);
-    var col = Math.floor(Math.random()*size);
-    applyRule(row, col);
-    updateBoard();
-}
+    for(var i = 0; i < 3; i++){
+        var row = Math.floor(Math.random()*size);
+        var col = Math.floor(Math.random()*size);
+        applyRule(row, col, false);
+        updateBoard();
+    }
 
+    document.getElementById('splash').style.opacity='0';
+    document.getElementById('moves').innerText=0;
+// }
 // run game
-function applyRule(row, col){
+function applyRule(row, col, checkForGameOver){
     for(var c = 0; c < size; c++){
         for(var r = 0; r < size; r++){
             if (rules[col][row][c][r] == 'F'){
@@ -47,7 +51,31 @@ function applyRule(row, col){
             // }
         }
     }
-    updateBoard()
+    updateBoard();
+    document.getElementById('moves').innerText = parseInt(document.getElementById('moves').innerText)+1;
+    if(checkForGameOver){
+        var gameOver = true;
+        for(var c = 0; c < size; c++){
+            for(var r = 0; r < size; r++){
+                if (!cells[c][r]){
+                    gameOver = false;
+                    break;
+                }
+            }
+        }
+        if (gameOver){
+            var handler = function(event) {
+                location.reload();
+            };
+            var data = {
+                message: 'Play again?',
+                timeout: 200000,
+                actionHandler: handler,
+                actionText: 'YES'
+            };
+            document.getElementById('snackbar').MaterialSnackbar.showSnackbar(data);
+        }
+    }
 }
 
 function updateBoard(){
@@ -66,7 +94,8 @@ function updateBoard(){
 function createRule(col, row, s){
     var rule = [];
     // funs = ['F', 'B', 'W', 'N'];
-    funs = ['F', 'N', 'N'];
+    // funs = ['F', 'N', 'N', 'N'];
+    funs = ['N'];
     for(var c = 0; c < s; c++){
         rule[c] = []
         for(var r = 0; r < s; r++){
@@ -77,3 +106,6 @@ function createRule(col, row, s){
     rule[col][row] = 'F'
     return rule
 }
+
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
