@@ -24,14 +24,14 @@ body{
 h1{
     font-family: 'Biryani', sans-serif;
     color: rgb(231, 231, 231); 
-    font-size: 5vw;
+    font-size: 20vw;
     margin: 0px;
 }
 
 h2{
     font-family: 'Biryani', sans-serif;
     color: rgb(231, 231, 231); 
-    font-size: 3vw;
+    font-size: 10vw;
     margin: 0px;
 }
 
@@ -87,6 +87,13 @@ h2{
         grid-template-columns: 1fr 3fr 1fr;
     }
     
+    h1{
+        font-size: 5vw;
+    }
+    
+    h2{
+        font-size: 3vw;
+    }
 }
 
 
