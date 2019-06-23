@@ -1,6 +1,6 @@
 // function setupGame(){
     // set game size
-    var size = 3
+    var size = 4
 
     // create rules
     var rules = []
