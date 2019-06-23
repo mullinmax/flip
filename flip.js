@@ -22,7 +22,7 @@
         }
     }
 
-    for(var i = 0; i < 3; i++){
+    for(var i = 0; i < 9; i++){
         var row = Math.floor(Math.random()*size);
         var col = Math.floor(Math.random()*size);
         applyRule(row, col, false);
@@ -94,7 +94,7 @@ function updateBoard(){
 function createRule(col, row, s){
     var rule = [];
     // funs = ['F', 'B', 'W', 'N'];
-    funs = ['F', 'N', 'N'];
+    funs = ['F', 'F', 'N', 'N', 'N'];
     // funs = ['N'];
     for(var c = 0; c < s; c++){
         rule[c] = []
