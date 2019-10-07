@@ -76,7 +76,7 @@ h2{
         justify-items: center;
         align-items: center;
         grid-gap: 1vh;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         width: 100%;
     }
 
